@@ -1,0 +1,56 @@
+package io.scal.ambi.navigation
+
+import io.scal.ambi.entity.chat.ChatChannelDescription
+import io.scal.ambi.entity.user.User
+import io.scal.ambi.extensions.trueOrThrow
+import io.scal.ambi.ui.notebooks.list.NotebookData
+
+object NavigateTo {
+
+    const val LOGIN = "LOGIN"
+    const val REGISTER = "REGISTER"
+    const val FORGOT_PASSWORD = "FORGOT_PASSWORD"
+
+    const val HOME = "HOME_MAIN"
+
+    const val CHANGE_AUDIENCE = "CHANGE_AUDIENCE"
+
+    const val CREATE_STATUS = "CREATE_STATUS"
+    const val CREATE_ANNOUNCEMENT = "CREATE_ANNOUNCEMENT"
+    const val CREATE_POLL = "CREATE_POLL"
+
+    const val CHAT_DETAILS = "CHAT_DETAILS"
+    const val CHAT_NEW_MESSAGE = "CHAT_NEW_MESSAGE"
+    const val CHAT_APPEND_USERS = "CHAT_APPEND_USERS"
+    const val CHAT_CHANNEL_SELECTION = "CHAT_CHANNEL_SELECTION"
+
+    const val PROFILE_DETAILS = "PROFILE_DETAILS"
+    const val PROFILE_PASSWORD_CHANGE = "PROFILE_PASSWORD_CHANGE"
+    const val PROFILE_RESUME = "PROFILE_RESUME"
+    const val CHAT = "CHAT";
+    const val NOTIFICATIONS = "NOTIFICATIONS";
+    const val CLASSES_DETAILS="CLASSES_DETAILS"
+    const val MORE = "MORE"
+    const val NOTEBOOKS = "NOTEBOOKS"
+    const val CAMPUS = "CAMPUS"
+    const val SETTING = "SETTING"
+    const val SUPPORT = "SUPPORT"
+    const val FAQ = "FAQ"
+    const val LOGOUT="LOGOUT"
+    const val CREATE_NOTEBOOK = "CREATE_NOTEBOOK"
+    const val SELECT_CONTACT = "SELECT_CONTACT"
+    const val OPEN_NOTEBOOK_DETAILS="OPEN_NOTEBOOK_DETAILS"
+    const val OPEN_FILE="OPEN_FILE"
+
+}
+
+class NavigateToParamChatChannelSelection(val selectedChatDescription: ChatChannelDescription,
+                                          val allChatDescriptions: List<ChatChannelDescription>) {
+    init {
+        allChatDescriptions.contains(selectedChatDescription).trueOrThrow("all chat description should contain selected one")
+    }
+}
+
+class NavigateToParamChatAppendUsers(val chatDescription: ChatChannelDescription,
+                                     val currentMemebers: List<User>)
+

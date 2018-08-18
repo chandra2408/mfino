@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AspectRelativeLayout">
+        <attr name="aspect_width" format="integer"/>
+        <attr name="aspect_height" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="BottomBarType">
+        <attr name="bb_tabXmlResource" format="reference" />
+        <attr name="bb_tabItemLayout" format="reference" />
+        <attr name="bb_tabScrollable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="PartlyBoldTextView">
+        <attr name="textToBold" format="string" />
+        <attr name="otherText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="BottomSheetList">
+        <attr name="bs_listXmlResource" format="reference" />
+        <attr name="bs_listItemLayout" format="reference" />
+        <attr name="bs_title" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RoleTagView">
+        <attr name="rtv_roleCommaSeperated" format="string" />
+    </declare-styleable>
+
+</resources>

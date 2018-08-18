@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingRight="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_actor_category"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:background="@drawable/news_feed_actor_category_bg"
+            android:ellipsize="end"
+            android:fontFamily="@font/nicolas_desle_pantra_regular"
+            android:lineSpacingExtra="4sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            tools:background="@drawable/news_feed_actor_category_bg"
+            tools:text="category" />
+    </LinearLayout>
+
+</layout>

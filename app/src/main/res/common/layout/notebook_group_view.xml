@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.text.InputType"/>
+
+        <variable
+            name="selectContactListener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="toolbarType"
+            type="android.databinding.ObservableField&lt;io.scal.ambi.extensions.view.ToolbarType&gt;"/>
+
+        <variable
+            name="viewModel"
+            type="io.scal.ambi.ui.notebooks.create.CreateNotebookViewModel"/>
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btmsheetclick"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{(view) -> viewModel.actionSelectGroup()}"
+            android:width="251dp"
+            android:background="@drawable/nbclassround"
+            android:drawableRight="@drawable/ic_creation_spinner_dropdown"
+            android:fontFamily="@font/nicolas_desle_pantra_medium"
+            android:lineSpacingMultiplier="1.11"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:singleLine="true"
+            android:text="@{viewModel.selectedClassOrGroup.get()}"
+            android:hint="@{viewModel.classesSelected.get()? @string/label_select_class: @string/label_select_group}"
+            android:gravity="center_vertical|left"
+            android:textAllCaps="false"
+            android:textColor="#1D2129"
+            android:textSize="18sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginTop="100dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/allmembers"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@{viewModel.allMembersSelected? @drawable/btnleftpressed : @drawable/btnleft}"
+                android:fontFamily="@font/nicolas_desle_pantra_regular"
+                android:gravity="center"
+                android:text="all members"
+                app:btnStatePressed="@{viewModel.allMembersSelected}"
+                android:onClick="@{(view) -> viewModel.allMembers()}"
+                android:textAllCaps="false"
+                android:textColor="@drawable/btn_label_color_states_white_blue"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/specificppl"
+                android:onClick="@{(view) -> viewModel.specificPeople()}"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@{viewModel.specificPeopleSelected? @drawable/btnrightpressed : @drawable/btnright}"
+                android:fontFamily="@font/nicolas_desle_pantra_regular"
+                android:gravity="center"
+                android:text="specific people"
+                app:btnStatePressed="@{viewModel.specificPeopleSelected}"
+                android:textColor="@drawable/btn_label_color_states_white_blue"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:width="351dp"
+            android:height="20dp"
+            android:fontFamily="@font/nicolas_desle_pantra_regular"
+
+            android:lineSpacingMultiplier="1.43"
+            android:text="who would you like to share with from your class?"
+            android:textColor="#707689"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:width="133dp"
+            android:height="20dp"
+            android:background="@drawable/nbclassround"
+            android:drawableLeft="@drawable/ic_active_add_user"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.11"
+            android:paddingLeft="20dp"
+            app:visibility="@{viewModel.specificPeopleSelected}"
+            android:text="share with who?"
+            android:textColor="#8A90A2"
+            android:onClick="@{selectContactListener}"
+            android:textSize="18sp" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

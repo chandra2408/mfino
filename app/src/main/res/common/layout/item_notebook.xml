@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="io.scal.ambi.ui.notebooks.list.INotebookListViewModel"/>
+
+        <variable
+            name="element"
+            type="io.scal.ambi.ui.notebooks.list.NotebookData"/>
+
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="7.5dp"
+        android:paddingTop="7.5dp">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:onClick="@{(view) -> viewModel.openNotebookDetails(element)}"
+            android:layout_height="74dp"
+            android:orientation="horizontal"
+            >
+
+
+            <RelativeLayout
+                android:layout_width="20dp"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="16dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    app:notebookBackground="@{element.color}"
+                    android:background="@drawable/notebook_item_spineleft" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/notebook_binder"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/notebook_item_spineright"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:foregroundGravity="center"
+                    android:gravity="left|center"
+                    android:weightSum="10">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/iv_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="16dp"
+                        app:actualImageScaleType="centerInside"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:iconImage="@{element.avatar}"
+                        app:roundAsCircle="true" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_gravity="left"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginBottom="2dp">
+
+                            <TextView
+                                android:id="@+id/name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                app:customFontName="@{@string/font_pantra_bold}"
+                                android:layout_weight="5"
+                                android:textSize="14sp"
+                                android:textColor="@color/black"
+                                android:text="@{element.title}"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp">
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                app:visibility="@{element.isOnlyYou}"
+                                app:srcCompat="@drawable/ic_creation_locked" />
+
+                            <TextView
+                                android:id="@+id/name2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_weight="5"
+                                android:text="@{element.memberCount==0? @string/label_only_you: @string/label_member_count(element.memberCount)}"
+                                android:textColor="#8A90A2"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/name4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_weight="5"
+                                android:paddingLeft="8dp"
+                                android:text="@{@string/label_notes_count(element.notes.size)}"
+                                android:textColor="#8A90A2"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/name5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_weight="5"
+                                android:paddingLeft="8dp"
+                                android:text="@{@string/label_files_count(element.files.size)}"
+                                android:textColor="#8A90A2"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

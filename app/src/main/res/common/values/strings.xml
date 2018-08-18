@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Ambi</string>
+
+    <string name="error_unknown">unknown error</string>
+
+    <string name="dialog_ok">OK</string>
+    <string name="hint_search">Search ...</string>
+    <string name="hint_search_ambi">Search Ambi ...</string>
+    <string name="text_retry">Retry</string>
+
+    <string name="day_ago_just_now">Just now</string>
+
+    <string name="day_ago_minutes_ago">%d mins ago</string>
+    <string name="day_ago_minute_ago">%d min ago</string>
+
+    <string name="day_ago_hours_ago">%d hours ago</string>
+    <string name="day_ago_days_ago">%d days ago</string>
+
+    <string name="day_ago_just_now_small">Just now</string>
+
+    <string name="action_like_default">like</string>
+    <string name="action_like_selected">liked</string>
+    <string name="action_comment">comment</string>
+
+    <string name="text_you">You</string>
+    <string name="text_and">and</string>
+    <string name="text_likes_this">%s likes this</string>
+    <string name="text_like_this">%s like this</string>
+
+    <string name="comment_hint_post">Add a comment…</string>
+
+    <string-array name="items_photo_picker">
+        <item>Camera</item>
+        <item>Gallery</item>
+    </string-array>
+
+    <string name="notification_message"><b>%1$s</b> %2$s</string>
+    <string name="members">%1$s members</string>
+    <string name="member">%1$s member</string>
+    <string name="find_someone">find a member</string>
+    <string name="label_notes_count">•  %d notes  </string>
+    <string name="label_files_count">•  %d files</string>
+    <string name="label_member_count">+%d others</string>
+    <string name="label_only_you">only you</string>
+    <string name="empty"></string>
+    <string name="label_select_class">select class</string>
+    <string name="label_select_group">select group</string>
+    <string name="label_notes_files">%d notes • %d files</string>
+    <string name="label_share_using">Share using</string>
+    <string name="label_file_viewer">Resource</string>
+
+    <string-array name="notebook_colors">
+        <item>#CED1D9</item>
+        <item>#7FD2F7</item>
+        <item>#000F75</item>
+        <item>#A6C74A</item>
+        <item>#22A671</item>
+        <item>#F68EBC</item>
+        <item>#EC2A79</item>
+        <item>#E9A820</item>
+        <item>#9B344D</item>
+        <item>#8B51F6</item>
+    </string-array>
+
+</resources>

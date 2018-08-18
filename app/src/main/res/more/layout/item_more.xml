@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="io.scal.ambi.ui.more.adapter.IMoreItemViewModel" />
+
+        <variable
+            name="element"
+            type="io.scal.ambi.ui.more.data.MoreData" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@{element.topTwo ? @color/white : @android:color/transparent}"
+        android:foregroundGravity="center_vertical|center"
+        android:onClick="@{(view) -> viewModel.optionSelected(element)}"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="left|center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:ignore="MissingConstraints">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="24dp"
+                android:src="@{element.drawableId}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="24.09dp"
+                android:drawablePadding="20dp"
+                android:text="@{element.name}"
+                android:textColor="#2F3746"
+                app:customFontName="@{@string/font_pantra_bold}"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+        <!--android:visibility="@{element.showDivider? View.VISIBLE: View.GONE}"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:background="#CED1D9"
+            app:visibility="@{element.hasSeparator}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="24dp"
+            tools:ignore="MissingConstraints"/>
+        <!--// </LinearLayout>-->
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

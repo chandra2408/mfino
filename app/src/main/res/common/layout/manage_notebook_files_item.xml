@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="viewModel"
+            type="io.scal.ambi.ui.notebooks.list.INotebookListViewModel"/>
+
+        <variable
+            name="element"
+            type="io.scal.ambi.entity.notebooks.FileData"/>
+
+    </data>
+
+    <LinearLayout
+        android:onClick="@{(view) -> viewModel.viewFile(element)}"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context="io.scal.ambi.notebooks.NbExamNoted">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:background="@drawable/nb_notes_moneyforus"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/moneytxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_toLeftOf="@+id/iv_post_image"
+                android:fontFamily="@font/nicolas_desle_pantra_regular"
+                android:lineSpacingMultiplier="1.33"
+                android:singleLine="true"
+                android:text="@{element.name}"
+                android:textColor="#1D2129"
+                android:textSize="15sp"
+                app:customFontName="@{@string/font_pantra_bold}"
+                tools:text="Money for us" />
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/moneytxt"
+                android:layout_toLeftOf="@+id/iv_post_image"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/nicolas_desle_pantra_light"
+                android:lineSpacingMultiplier="1.33"
+                android:paddingTop="2dp"
+                android:textColor="#8A90A2"
+                android:textSize="12sp"
+                app:notebookUploadedAt="@{element.updatedAt}"
+                tools:text="Uploaded Apr 19 at 8:39pm" />
+
+
+            <LinearLayout
+                android:background="@drawable/bg_file_right_cornered"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_padding_end"
+                app:layout_constraintStart_toStartOf="@+id/guideline_padding_start"
+                app:layout_constraintTop_toBottomOf="@+id/tv_message"
+                android:id="@+id/iv_post_image"
+                android:layout_width="123dp"
+                android:layout_height="78dp"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical"
+                >
+
+                <io.scal.ambi.ui.global.view.WrapContentDraweeView
+                    android:onClick="@{(view) -> viewModel.viewFile(element)}"
+                    app:roundBottomEnd="true"
+                    app:roundTopEnd="true"
+                    app:roundBottomStart="false"
+                    app:roundTopStart="false"
+                    app:roundedCornerRadius="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:actualImageScaleType="centerCrop"
+                    app:iconImage="@{element.icon}"
+                    app:layout_constraintEnd_toEndOf="@+id/guideline_padding_end"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_padding_start"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_message"
+                    app:visibility="@{element.isImage}"
+                    />
+
+                <WebView
+                    android:onClick="@{(view) -> viewModel.viewFile(element)}"
+                    app:visibility="@{!element.isImage}"
+                    android:layout_width="match_parent"
+                    app:webURL="@{element.url}"
+                    android:background="@drawable/webview_round_right"
+                    android:layout_height="match_parent"
+                    />
+
+            </LinearLayout>
+
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/nb_notelist_underline"
+                app:notebookBackground="@{element.documentColor}"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/line"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/nb_notes_png"
+                app:notebookBackground="@{element.documentColor}"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:width="22dp"
+                    android:height="13dp"
+                    android:fontFamily="@font/nicolas_desle_pantra_regular"
+                    android:gravity="center"
+                    android:lineSpacingMultiplier="1.30"
+                    android:text="@{element.fileType}"
+                    tools:text="PNG"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</layout>

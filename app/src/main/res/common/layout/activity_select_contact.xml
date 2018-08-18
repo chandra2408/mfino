@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <import type="android.text.InputType"/>
+
+        <variable
+            name="textChangedListener"
+            type="android.text.TextWatcher"/>
+
+        <variable
+            name="toolbarType"
+            type="android.databinding.ObservableField&lt;io.scal.ambi.extensions.view.ToolbarType&gt;"/>
+
+        <variable
+            name="viewModel"
+            type="io.scal.ambi.ui.notebooks.contact.SelectContactViewModel"/>
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:background="@color/white"
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/root_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/app_bar_layout"
+                app:elevation="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:theme="@style/AppBarLayout">
+
+                <include
+                    app:elevation="0dp"
+                    layout="@layout/toolbar"
+                    bind:toolbarType="@{toolbarType}"/>
+
+            </android.support.design.widget.AppBarLayout>
+
+            <include
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp"
+                android:id="@+id/c_search"
+                app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
+                layout="@layout/item_toolbar_content_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginStart="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:viewModel="@{viewModel.searchViewModel}"
+                app:textChangedListener="@{textChangedListener}"
+                />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_marginTop="6dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c_search">
+
+                <android.support.v4.widget.SwipeRefreshLayout
+                    android:id="@+id/srl"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="6dp"
+                    app:onSwipeToRefresh="@{() -> viewModel.refresh()}">
+
+                    <io.scal.ambi.ui.global.view.AutoScrollRecyclerView
+                        android:id="@+id/rv_contacts"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+
+                </android.support.v4.widget.SwipeRefreshLayout>
+
+            </RelativeLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

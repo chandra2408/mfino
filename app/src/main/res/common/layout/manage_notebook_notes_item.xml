@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="element"
+            type="io.scal.ambi.model.data.server.responses.notebooks.NotesItem"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/nb_classnotes_round"
+            android:orientation="vertical"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:height="20dp"
+                android:fontFamily="@font/nicolas_desle_pantra_bold"
+                android:lineSpacingMultiplier="1.43"
+                android:text="@{element.name}"
+                android:textColor="#1D2129"
+                android:textSize="14sp"
+                app:customFontName="@{@string/font_pantra_bold}"
+                tools:text="In Class Notes" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nicolas_desle_pantra_regular"
+                android:lineSpacingMultiplier="1.33"
+                android:paddingTop="2dp"
+                android:textColor="#8A90A2"
+                android:textSize="12sp"
+                app:notebookUpdatedAt="@{element.updatedAt}"
+                tools:text="Edited Apr 21 at 5:30pm" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nicolas_desle_pantra_medium"
+                android:lineSpacingMultiplier="1.29"
+                android:text="@{element.content}"
+                android:textColor="#707689"
+                android:textSize="14sp"
+                app:visibility="@{element.content!=null}"
+                tools:text="This is a snippet" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="right|center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+
+                    android:fontFamily="@font/nicolas_desle_pantra_medium"
+                    android:gravity="right"
+                    android:lineSpacingMultiplier="1.25"
+                    android:text="notes by"
+                    android:textColor="#1D2129"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/ambi_ico" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

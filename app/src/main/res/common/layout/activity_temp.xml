@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="io.scal.ambi.notebooks.NbExamNoted">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="182dp"
+        android:background="#F68EBC"
+        android:orientation="vertical"
+        android:paddingLeft="14dp"
+        android:paddingTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F68EBC"
+
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_back" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nicolas_desle_pantra_regular"
+                    android:text="(BIO 001)"
+                    android:textColor="#1D2129"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nicolas_desle_pantra_bold"
+                    android:text="Biology Exam Notes"
+                    android:textColor="#1D2129"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nicolas_desle_pantra_medium"
+                    android:text="16 notes • 4 files"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="end">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="24dp"
+                    android:src="@drawable/ic_vertical_dots_black" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F68EBC"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="50dp"
+
+                    android:src="@drawable/avatar" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="Circular"
+                    android:text="only you"
+                    android:textColor="#1D2129"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:layout_width="85dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/sharebtnround"
+                    android:drawableLeft="@drawable/ic_tab_newsfeed_icon"
+                    android:text="Share" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/nicolas_desle_pantra_bold"
+            android:text="notes and files"
+            android:textColor="#707689"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/ic_add_item_blue" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/notebook_edittext"
+        android:gravity="left|center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView23"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/ic_search" />
+
+
+        <EditText
+            android:id="@+id/searc3h"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="20dp"
+            android:height="20dp"
+            android:fontFamily="@font/nicolas_desle_pantra_bold"
+            android:hint="search..."
+            android:lineSpacingMultiplier="1.11"
+            android:textColor="#8A90A2"
+            android:textSize="14sp"
+            app:backgroundTint="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/nb_classnotes_round"
+        android:orientation="vertical"
+        android:paddingLeft="17dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:width="128.17dp"
+            android:height="20dp"
+            android:fontFamily="@font/nicolas_desle_pantra_medium"
+            android:lineSpacingMultiplier="1.43"
+
+            android:text="In Class Notes"
+            android:textColor="#1D2129"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:width="149.88dp"
+            android:height="16dp"
+            android:fontFamily="@font/nicolas_desle_pantra_regular"
+            android:lineSpacingMultiplier="1.33"
+
+            android:text="Edited Apr 21 at 5:30pm"
+            android:textColor="#8A90A2"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:height="54dp"
+            android:fontFamily="@font/nicolas_desle_pantra_regular"
+            android:lineSpacingMultiplier="1.29"
+
+            android:text="This is a snippet from the note and shows a preview of the note and give context to the item that the user is viewing at the moment…"
+            android:textColor="#707689"
+            android:textSize="12sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="15dp"
+                android:fontFamily="@font/nicolas_desle_pantra_bold"
+                android:gravity="right"
+                android:lineSpacingMultiplier="1.25"
+
+                android:text="notes by"
+                android:textColor="#1D2129"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_ambi_logo_small" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/nb_notes_moneyforus"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/moneytxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:width="92dp"
+            android:height="20dp"
+            android:fontFamily="@font/nicolas_desle_pantra_bold"
+            android:lineSpacingMultiplier="1.33"
+
+            android:text="Money for us"
+            android:textColor="#1D2129"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/moneytxt"
+            android:layout_marginLeft="16dp"
+            android:width="149.88dp"
+            android:height="16dp"
+            android:fontFamily="@font/nicolas_desle_pantra_regular"
+            android:lineSpacingMultiplier="1.33"
+
+            android:text="Uploaded Apr 19 at 8:39pm"
+            android:textColor="#8A90A2"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="123dp"
+            android:layout_height="78dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/avatar" />
+
+        <LinearLayout
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/nb_notelist_underline"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/line"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/nb_notes_png"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:width="22dp"
+                android:height="13dp"
+                android:fontFamily="@font/nicolas_desle_pantra_regular"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.30"
+                android:text="PNG"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

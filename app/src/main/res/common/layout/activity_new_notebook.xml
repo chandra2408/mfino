@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <import type="android.text.InputType"/>
+
+        <variable
+            name="selectContactListener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="toolbarType"
+            type="android.databinding.ObservableField&lt;io.scal.ambi.extensions.view.ToolbarType&gt;"/>
+
+        <variable
+            name="viewModel"
+            type="io.scal.ambi.ui.notebooks.create.CreateNotebookViewModel"/>
+
+    </data>
+
+    <RelativeLayout
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_above="@+id/btn_save"
+                android:id="@+id/root_container"
+                android:layout_width="match_parent"
+                android:fitsSystemWindows="true"
+                android:layout_height="match_parent">
+
+                <android.support.design.widget.AppBarLayout
+                    android:id="@+id/top_bar"
+                    app:elevation="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:theme="@style/AppBarLayout">
+
+                    <include
+                        app:elevation="0dp"
+                        layout="@layout/toolbar"
+                        bind:toolbarType="@{toolbarType}"/>
+
+                </android.support.design.widget.AppBarLayout>
+
+                <ScrollView
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/top_bar"
+                    android:id="@+id/container_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="?actionBarSize"
+                        android:background="@android:color/background_light"
+                        app:layout_behavior="io.scal.ambi.ui.global.view.behavior.AppBarScrollingTransitionBehavior">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15.5dp"
+                            android:layout_marginRight="15.5dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/notebook_edittext"
+                            android:gravity="left|center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView23"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginLeft="16.5dp"
+                                android:layout_marginRight="20dp"
+                                app:srcCompat="@drawable/ic_notebooks" />
+
+
+                            <EditText
+                                app:customFontName="@{@string/font_pantra_bold}"
+                                android:id="@+id/searc3h"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="20dp"
+                                android:hint="notebook title"
+                                android:lineSpacingMultiplier="1.11"
+                                android:textColor="#8A90A2"
+                                android:text="@={viewModel.stateModel.notebookTitle.data}"
+                                android:textSize="14sp"
+                                app:backgroundTint="@color/white" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="23dp"
+                            android:id="@+id/ll_select_notebook_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15.5dp"
+                            android:layout_marginRight="15.5dp"
+                            android:background="@drawable/notebook_edittext"
+                            android:gravity="left|center"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_marginLeft="19.5dp"
+                                android:id="@+id/iv_selected_color"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_marginRight="20dp"
+                                android:background="@drawable/bg_notebook_selected_color" />
+
+                            <EditText
+                                app:customFontName="@{@string/font_pantra_bold}"
+                                android:id="@+id/searc3"
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="40dp"
+                                android:height="20dp"
+                                android:text="@={viewModel.stateModel.notebookColor.data}"
+                                android:hint="notebook color"
+                                android:lineSpacingMultiplier="1.11"
+                                android:textColor="#1D2129"
+                                android:cursorVisible="false"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:textSize="14sp"
+                                app:backgroundTint="@color/white" />
+
+                            <ImageView
+                                android:layout_marginRight="16.5dp"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                app:srcCompat="@drawable/ic_arrow_down" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_gravity="center_horizontal"
+                            android:visibility="gone"
+                            android:id="@+id/ll_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginRight="14dp"
+                            android:layout_marginTop="21.5dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"/>
+
+                        <LinearLayout
+                            app:visibility="@{!viewModel.isInEditableModel}"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:paddingLeft="16.5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="30dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    app:customFontName="@{@string/font_pantra_bold}"
+                                    style="@style/PermissionsPrivac"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingMultiplier="1.25"
+                                    android:text="permissions and privacy"
+                                    android:textSize="16sp"
+                                    />
+
+                                <TextView
+                                    android:paddingTop="8dp"
+                                    style="@style/KeepThisPrivateO"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingMultiplier="1.43"
+                                    android:text="keep this private, or associate it with a class or group (choose one)"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="19.5dp"
+                                android:layout_marginLeft="15.5dp"
+                                android:layout_marginRight="15.5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="49dp"
+                                android:background="@drawable/rounded_corners"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/privates"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    app:customFontName="@{@string/font_pantra_bold}"
+                                    android:background="@{viewModel.privateSelected? @drawable/btnleftpressed : @drawable/btnleft}"
+                                    android:gravity="center"
+                                    android:text="private"
+                                    android:onClick="@{(view) -> viewModel.selectedPrivate()}"
+                                    app:btnStatePressed="@{viewModel.privateSelected}"
+                                    android:textAllCaps="false"
+                                    android:textColor="@drawable/btn_label_color_states_white_blue"
+                                    android:textSize="16sp" />
+
+
+                                <Button
+                                    app:customFontName="@{@string/font_pantra_bold}"
+                                    android:id="@+id/classs"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:onClick="@{(view) -> viewModel.selectedClass()}"
+                                    android:layout_weight="1"
+                                    android:background="@{viewModel.classesSelected? @drawable/btncenterpressed : @drawable/btncenter}"
+                                    android:gravity="center"
+                                    android:text="class"
+                                    app:btnStatePressed="@{viewModel.classesSelected}"
+                                    android:textAllCaps="false"
+                                    android:textColor="@drawable/btn_label_color_states_white_blue"
+                                    android:textSize="16sp" />
+
+
+                                <Button
+                                    app:customFontName="@{@string/font_pantra_bold}"
+                                    android:id="@+id/groups"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:onClick="@{(view) -> viewModel.selectedGroup()}"
+                                    android:gravity="center"
+                                    android:background="@{viewModel.groupsSelected? @drawable/btnrightpressed : @drawable/btnright}"
+                                    android:text="group"
+                                    app:btnStatePressed="@{viewModel.groupsSelected}"
+                                    android:textAllCaps="false"
+                                    android:textColor="@drawable/btn_label_color_states_white_blue"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                app:visibility="@{!viewModel.privateSelected}"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                >
+
+                                <LinearLayout
+                                    android:layout_marginTop="19dp"
+                                    android:layout_marginLeft="15.5dp"
+                                    android:layout_marginRight="15.5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
+                                    >
+
+                                    <Button
+                                        android:paddingLeft="16.5dp"
+                                        android:paddingRight="16.5dp"
+                                        android:id="@+id/btmsheetclick"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:onClick="@{(view) -> viewModel.actionSelectGroup()}"
+                                        android:width="251dp"
+                                        android:background="@drawable/nbclassround"
+                                        android:drawableRight="@drawable/ic_creation_spinner_dropdown"
+                                        android:fontFamily="@font/nicolas_desle_pantra_medium"
+                                        android:lineSpacingMultiplier="1.11"
+                                        android:singleLine="true"
+                                        android:text="@{viewModel.selectedClassOrGroup.get()}"
+                                        android:hint="@{viewModel.classesSelected.get()? @string/label_select_class: @string/label_select_group}"
+                                        android:gravity="center_vertical|left"
+                                        android:textAllCaps="false"
+                                        android:textColor="#8A90A2"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="31.5dp"
+                                        android:height="20dp"
+                                        android:lineSpacingMultiplier="1.43"
+                                        android:text="who would you like to share with from your class?"
+                                        android:textColor="#707689"
+                                        android:textSize="14sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="49dp"
+                                        android:layout_marginTop="15.5dp"
+                                        android:orientation="horizontal">
+
+                                        <Button
+                                            app:customFontName="@{@string/font_pantra_bold}"
+                                            android:id="@+id/allmembers"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@{viewModel.allMembersSelected? @drawable/btnleftpressed : @drawable/btnleft}"
+                                            android:fontFamily="@font/nicolas_desle_pantra_regular"
+                                            android:gravity="center"
+                                            android:text="all members"
+                                            app:btnStatePressed="@{viewModel.allMembersSelected}"
+                                            android:onClick="@{(view) -> viewModel.allMembers()}"
+                                            android:textAllCaps="false"
+                                            android:textColor="@drawable/btn_label_color_states_white_blue"
+                                            android:textSize="16sp" />
+
+                                        <Button
+                                            app:customFontName="@{@string/font_pantra_bold}"
+                                            android:id="@+id/specificppl"
+                                            android:onClick="@{(view) -> viewModel.specificPeople()}"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@{viewModel.specificPeopleSelected? @drawable/btnrightpressed : @drawable/btnright}"
+                                            android:fontFamily="@font/nicolas_desle_pantra_regular"
+                                            android:gravity="center"
+                                            android:text="specific people"
+                                            app:btnStatePressed="@{viewModel.specificPeopleSelected}"
+                                            android:textColor="@drawable/btn_label_color_states_white_blue"
+                                            android:textAllCaps="false"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        app:visibility="@{viewModel.specificPeopleSelected}"
+                                        android:background="@drawable/notebook_edittext"
+                                        android:layout_marginTop="23dp"
+                                        android:layout_marginBottom="23dp"
+                                        android:orientation="horizontal"
+                                        android:padding="1dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:onClick="@{selectContactListener}"
+                                            android:layout_marginRight="20dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="16.5dp"
+                                            app:srcCompat="@drawable/ic_active_add_user"
+                                            android:layout_width="24dp"
+                                            android:layout_height="24dp" />
+
+                                        <io.scal.ambi.ui.home.chat.newmessage.chip.CustomChipsInput
+                                            android:layout_marginRight="1dp"
+                                            android:id="@+id/chips_input"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="8dp"
+                                            app:hint="share with who?"
+                                            android:background="@color/white"
+                                            app:chip_deletable="false"
+                                            app:chip_deleteIconColor="@color/black"
+                                            app:maxRows="3"
+                                            android:layout_below="@+id/seperator"
+                                            android:textSize="18sp"
+                                            app:chip_labelColor="@color/white"
+                                            app:chip_backgroundColor="@color/blue"
+                                            app:showChipDetailed="false"/>
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_save"
+                android:onClick="@{(view) -> viewModel.saveNotebook()}"
+                style="@style/Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentBottom="true"
+                android:height="20dp"
+                android:background="@drawable/nbbtnbg"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.33"
+                android:text="save notebook"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_gravity="bottom"
+                android:textSize="15sp"
+                app:customFontName="@{@string/font_pantra_bold}" />
+
+        </RelativeLayout>
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content">
+            <io.scal.ambi.extensions.view.BottomSheetList
+                android:layout_width="match_parent"
+                app:behavior_hideable="true"
+                app:behavior_peekHeight="0dp"
+                app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+                android:layout_height="180dp"
+                app:bs_title="select class"
+                android:id="@+id/bms_view"
+
+                />
+        </android.support.design.widget.CoordinatorLayout>
+
+        <LinearLayout
+            android:id="@+id/progress"
+            android:gravity="center"
+            android:clickable="true"
+            android:visibility="gone"
+            android:background="@color/semi_transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

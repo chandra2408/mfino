@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_my_feed"
+        title="my feed" />
+    <tab
+        id="@+id/tab_school_feed"
+        title="school feed" />
+</tabs>
+

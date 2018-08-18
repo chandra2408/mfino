@@ -1,0 +1,215 @@
+apply from: "resources.gradle"
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.ambi.work"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary true
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storePassword 'android'
+            storeFile file('debug.keystore')
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            keyAlias 'ambi'
+            keyPassword 'aandroidAMBI2018'
+            storePassword 'androidAMBI2018'
+            storeFile file('ambi.jks')
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+
+            minifyEnabled false
+
+            signingConfig signingConfigs.debug
+
+            versionNameSuffix "-debug"
+        }
+    }
+
+    flavorDimensions "api"
+    productFlavors {
+        aws {
+            dimension "api"
+
+//            buildConfigField "String", "MAIN_SERVER_URL", '"http://ec2-184-72-69-125.compute-1.amazonaws.com:4000/api/"'
+//            buildConfigField "String", "MAIN_IMAGES_URL", '"https://www.ambi.work/"'
+
+            buildConfigField "String", "MAIN_SERVER_URL", '"https://demo1.ambi.work:4000/api/"'
+            buildConfigField "String", "MAIN_IMAGES_URL", '"https://demo1.ambi.work/"'
+        }
+        sandbox {
+            dimension "api"
+
+            buildConfigField "String", "MAIN_SERVER_URL", '"https://sandbox.ambi.work/api/"'
+            buildConfigField "String", "MAIN_IMAGES_URL", '"https://sandbox.ambi.work/"'
+        }
+        life {
+            dimension "api"
+
+            buildConfigField "String", "MAIN_SERVER_URL", '"http://sandbox.ambi.work:4000/api/"'
+            buildConfigField "String", "MAIN_IMAGES_URL", '"http://sandbox.ambi.work:4000/"'
+        }
+        life {
+            dimension "api"
+
+            buildConfigField "String", "MAIN_SERVER_URL", '"https://www.ambi.work/api/"'
+            buildConfigField "String", "MAIN_IMAGES_URL", '"https://www.ambi.work/"'
+        }
+        arpit {
+            dimension "api"
+            //buildConfigField "String", "MAIN_SERVER_URL", '"http://ambi-api.ngrok.io/api/"'
+            //buildConfigField "String", "MAIN_IMAGES_URL", '"https://www.ambi.work/"'
+//            buildConfigField "String", "MAIN_SERVER_URL", '"http://172.16.2.203:4000/api/"'
+//            buildConfigField "String", "MAIN_IMAGES_URL", '"http://172.16.2.203:4000/"'
+
+//            buildConfigField "String", "MAIN_SERVER_URL", '"http://139.59.77.100:4000/api/"'
+//            buildConfigField "String", "MAIN_IMAGES_URL", '"http://139.59.77.100:4000/"'
+
+            buildConfigField "String", "MAIN_SERVER_URL", '"https://ambi.acceon.com/api/"'
+            buildConfigField "String", "MAIN_IMAGES_URL", '"https://ambi.acceon.com/"'
+
+//            buildConfigField "String", "MAIN_SERVER_URL", '"http://139.59.77.100:4000/api/"'
+//            buildConfigField "String", "MAIN_IMAGES_URL", '"http://139.59.77.100/"'
+        }   
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    lintOptions {
+        abortOnError true
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'com.android.support:multidex:1.0.2'
+
+    // Core
+    implementation "com.azoft.injector:injector:0.9.3"
+    implementation "com.jakewharton.timber:timber:4.5.1"
+    implementation "com.facebook.fresco:fresco:1.7.1"
+
+    // data binding
+    kapt "com.android.databinding:compiler:$rootProject.androidPluginVersion"
+
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // navigation
+    implementation 'ru.terrakok.cicerone:cicerone:2.1.0'
+
+    // Support
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // Dagger 2
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+
+    // RxJava 2
+    implementation "io.reactivex.rxjava2:rxjava:2.1.6"
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.1.0'
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+
+    // Retrofit 2
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
+
+    // LeakCanary
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.leakCanaryVersion"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakCanaryVersion"
+
+    // Permission Dispatcher
+    implementation("com.github.hotchemi:permissionsdispatcher:$rootProject.permissionVersion") {
+        // if you don't use android.app.Fragment you can exclude support for them
+        exclude module: "support-v13"
+    }
+    kapt "com.github.hotchemi:permissionsdispatcher-processor:$rootProject.permissionVersion"
+
+    // time
+    implementation "joda-time:joda-time:2.9.9"
+    // rxPreferences
+    implementation 'com.github.pwittchen:prefser-rx2:2.1.0'
+
+    // google architecture components
+    implementation "android.arch.lifecycle:runtime:$rootProject.architectureComponentsVersion"
+    implementation "android.arch.lifecycle:extensions:$rootProject.architectureComponentsVersion"
+    kapt "android.arch.lifecycle:compiler:$rootProject.architectureComponentsVersion"
+
+    // analytics
+    implementation('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+        transitive = true
+    }
+
+    // chat
+    implementation 'com.twilio:chat-android:2.0.4'
+
+    // ui
+    //implementation "com.roughike:bottom-bar:2.3.1"
+    implementation 'com.hannesdorfmann:adapterdelegates3:3.0.1' // for news feed recycler view with different view types
+    implementation 'com.vanniktech:emoji-google:0.5.1'
+    implementation 'com.github.pchmn:MaterialChipsInput:1.0.8' // for new chat creation screen. it is customized a lot. including reflection
+    implementation 'com.caverock:androidsvg:1.2.1'     // for fresco svg
+
+    // push notifications
+    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+    implementation 'com.google.android.gms:play-services-base:11.8.0'
+
+    // for file storage in s3
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.6.13'
+    implementation 'com.amazonaws:aws-android-sdk-core:2.6.13'
+}
+
+apply plugin: 'com.google.gms.google-services'

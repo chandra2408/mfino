@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <import type="android.view.ViewGroup.LayoutParams"/>
+
+        <variable
+            name="viewModel"
+            type="io.scal.ambi.ui.global.search.SearchViewModel"/>
+
+        <variable
+            name="textChangedListener"
+            type="android.text.TextWatcher"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/bg_edit_text">
+
+        <io.scal.ambi.ui.global.view.FocusableDummyView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="8dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_search"/>
+
+            <io.scal.ambi.ui.global.view.FocusClearEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@{viewModel.hint}"
+                android:imeOptions="actionDone"
+                android:inputType="text|textAutoCorrect|textAutoComplete"
+                android:singleLine="true"
+                android:text="@={viewModel.searchText}"
+                android:textColor="@color/graySearch"
+                android:textColorHint="@color/graySearch"
+                android:textSize="12sp"
+                app:textChangedListener="@{textChangedListener}"
+                app:customFontName="@{@string/font_pantra_bold}"
+                app:toolbarContentExpand="@{viewModel.expandView}"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

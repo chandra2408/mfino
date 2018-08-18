@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <import type="android.view.Gravity" />
+
+        <variable
+            name="viewModel"
+            type="io.scal.ambi.ui.home.chat.details.ChatDetailsViewModel"/>
+
+        <variable
+            name="element"
+            type="io.scal.ambi.ui.home.chat.details.data.UIChatMessage.ImageMessage"/>
+
+    </data>
+
+    <LinearLayout
+        android:gravity="@{element.alignLeft? Gravity.START : Gravity.END}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> viewModel.onMessageClick(element)}"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout
+            app:visibility="@{element.alignLeft}"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <include
+                android:background="@color/white"
+                android:id="@+id/c_header"
+                layout="@layout/item_chat_details_message_item_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:element="@{element}"
+                />
+        </LinearLayout>
+
+        <com.vanniktech.emoji.EmojiTextView
+            android:id="@+id/tv_image_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="30dp"
+            android:ellipsize="end"
+            android:text="@{element.message}"
+            android:textColor="#222222"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:customFontName="@{@string/font_pantra_regular}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Screenshort 2017-11-27.png"
+            />
+
+        <io.scal.ambi.ui.global.view.AspectRelativeLayout
+            app:visibility="@{!element.isResource}"
+            android:background="@{element.alignLeft? @drawable/bg_chat_message_left : @drawable/bg_chat_message_right}"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            >
+
+            <io.scal.ambi.ui.global.view.WrapContentDraweeView
+                android:layout_margin="2dp"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                app:actualImageScaleType="centerCrop"
+                app:iconImage="@{element.image}"
+                app:roundedCornerRadius="10dp"
+                />
+
+        </io.scal.ambi.ui.global.view.AspectRelativeLayout>
+
+        <io.scal.ambi.ui.global.view.AspectRelativeLayout
+            app:visibility="@{element.isResource}"
+            android:background="@{element.alignLeft? @drawable/bg_chat_message_left : @drawable/bg_chat_message_right}"
+            android:layout_width="64dp"
+            android:padding="16dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            >
+
+            <io.scal.ambi.ui.global.view.WrapContentDraweeView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{}"
+                android:tint="@{element.alignLeft? @color/blue: @color/white}"
+                app:actualImageScaleType="centerCrop"
+                app:iconImage="@{element.image}"
+                app:roundedCornerRadius="10dp"
+                />
+
+        </io.scal.ambi.ui.global.view.AspectRelativeLayout>
+
+    </LinearLayout>
+
+</layout>
